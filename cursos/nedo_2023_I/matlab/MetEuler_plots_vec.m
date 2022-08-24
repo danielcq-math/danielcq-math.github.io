@@ -25,7 +25,7 @@ t=a;
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Algoritmo
 y_hat=zeros(N+1,1); %Ver Libro de Gilat-Matlab Capitulo 2
-yy_hat(1)=y0; %El primer elemento de un vector en Matlab de empieza con índice 1 
+y_hat(1)=y0; %El primer elemento de un vector en Matlab de empieza con índice 1 
 for i=1:N
     y_hat(i+1)=y_hat(i)+h*f_y_t(t,y_hat(i));
     t= t + h;
