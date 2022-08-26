@@ -9,6 +9,7 @@
 % 2) Calcula errores relativos y absolutos.
 % 3) Grafica la solucion exacta y aproximada
 % **Utiliza aritmética vectorial**
+% Imprime un tabla en la terminal
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -16,12 +17,12 @@
 %interval endpoints of [a,b]
 a=0;
 b=2;
-N=4; %#total de puntos en el mallado
-h=(b-a)/N;
-y0= 0.5; %valor inicial @ t=a
+N=10; %#total de puntos en el mallado
 f_y_t=@f; %Declaracion de una funcion
+y0= 0.5; %valor inicial @ t=a
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+h=(b-a)/N;
 t=a;
-
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %Algoritmo
 y_hat=zeros(N+1,1); %Ver Libro de Gilat-Matlab Capitulo 2
@@ -40,26 +41,15 @@ e_val_r=e_val./abs((y_val));
 
 
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%(Para más info de como graficar en Matlab ver libro de Gilat Cap 5) 
-%Grafica y_hat vs y_val
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Bloque hold on - hold off (Ver Libro Gilat-Matlab Seccion 5.3.2)
-hold on %Instrucciones para un grafica
-plot(t_val,y_hat,'-b*',t_val,y_val,'-r');
-title('SolApprox vs SolExacta');
-legend('y\_hat','y\_val');
-hold off
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-figure %Crear otra ventana para graficar
-%Grafica del error absoluto
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Bloque hold on - hold off
-hold on
-title('Error Abs');
-plot(t_val,e_val,'-r*')
-legend('e\_val');
-hold off
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Output
+% Crear tabla con valores: t_val| y_hal| y_val| errores abs | errores rel
+% Crea tabla con vectores columna
+output_table=[t_val' y_hat y_val' e_val' e_val_r'] ; % y_hat es el unico vector columna no necesita tranpuesta
+%Ver Gilat-Matlab seccion 4.3 para el comando <disp>
+disp("Tabla: t_val | y_hal|  y_exact| errores abs | errores rel:"); %Imprime en la terminal                                                 
+disp(output_table);%Imprime en la terminal
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % **La definiciones de las funciones deben ir al final del archivo script
