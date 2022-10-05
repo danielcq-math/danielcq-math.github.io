@@ -2,7 +2,7 @@
 % Faculta de de Ciencias-UNAM-CdMx
 % Prof. Daniel Castañon Quiroz. daniel.castanon@iimas.unam.mx
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Método de Euler Implicito
+% Método de Trapecio
 % 1) Resuelve la ODE
 %    y' = f(t,y) en t \in [a,b] sujeta a y(a)=y0
 % 2) Calcula errores relativos y absolutos.
@@ -11,7 +11,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%Parametros del metodo de Euler Implicito
+%Parametros del metodo del Trapecio
 %interval endpoints of [a,b]
 a=0;
 b=1;
@@ -20,8 +20,8 @@ N_cicles=8;         % numero de ciclos que corre el algoritmo numérico
 f_y_t=@f; %Declaracion de una funcion
 y0= -1; %valor inicial @ t=a
 %Parametros PFijo
-N_iter_PFijo=100; %Numero de iteraciones del Algoritmo del PF
-eps_tol= 1.e-10;  %Tol abosluto del criterio de paro del Alg. del PF
+N_iter_PFijo=100;
+eps_tol= 1.e-10;
 format shortEng
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -48,21 +48,21 @@ for k=1:N_cicles
     y_hat(1)=y0; %El primer elemento de un vector en Matlab de empieza con índice 1 
     for i=1:N
         %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-        %Metodo del Punto fijo para Euler implicito
-        p0=y_hat(i); %Aproximacion inicial
+        %Metodo del Punto fijo para el M. Trapecio
+        p0=y_hat(i);
         j=1;
         while j<N_iter_PFijo    
-            p=y_hat(i) + h*f_y_t(t+h,p0);% t+h corresponde al valor de y_hat(i+1)
+            p=y_hat(i) + 0.5*h*(f_y_t(t,y_hat(i)) + f_y_t(t+h,p0) );
             err_p_fijo = abs(p-p0);
             p0=p;
             %disp(err_p_fijo);
-            if(err_p_fijo < eps) %Criterio de paro
-                break %sale del ciclo while
+            if(err_p_fijo < eps)
+                break
             end  
             j=j+1;
         end
         if( j==N_iter_PFijo)
-            disp("** Algoritmo de PFijo falló**")
+            disp("** Algoritmo de PFijo fallo**")
             break
         end
         y_hat(i+1)=p;
