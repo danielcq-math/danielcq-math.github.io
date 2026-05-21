@@ -1,19 +1,14 @@
-######################################################
+####################################################################################################
 ##% Curso de Teoría y Práctica Elementos Finitos
 #% Posgrado en Matematicas-UNAM-CdMx
-#% Prof. Daniel Castañon Quiroz. daniel.castanon@iimas.unam.mx
-#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-#% Descripcion: Dada una función u(x)
-#%              obtenemos su interpolador u_h(x) utilizando
-#%              las funciones hat_j(x) lineales por pedazos, i.e., 
-#%              funciones de lagrange P1.
-#%              El calculamos el error (u - uh) en la norma L2
-#%              para diferentes refinaciones del intervalo
+#% Prof. Daniel Castañon Quiroz. danielcq@iimas.unam.mx
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#################################
+#% Descripcion: Resuelve el problema de Poisson con E.F de Lagrange y condiciones de Dirichlet nulas
 #%Ouput:     Error en H1 y L2
-#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+#%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%###################################################
 #%% Parametros de Usuario
 #%% hmax, orden del EF de Lagrange
-####################################################
+#################################################################################################
 #This example is taken from ngsolve-itutorials and the iFEM/primal course
 
 
